@@ -2976,6 +2976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 8
   tilemap: {fileID: 264571273}
+  health: 0
   weaponPrefabs:
   - {fileID: 6903247834425463060, guid: 18c6bf124456cc44993820cff5a2e2a4, type: 3}
   AttackAction:
@@ -3044,7 +3045,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
