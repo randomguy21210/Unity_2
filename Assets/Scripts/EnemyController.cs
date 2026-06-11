@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour, IEnemy
     public IWeapon activeWeapon;
     private bool isRanged = false;
     public GameObject weaponPrefab;
+    public float getMoveSpeed(){return moveSpeed;}
+    public void setMoveSpeed(float set){moveSpeed = set;}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

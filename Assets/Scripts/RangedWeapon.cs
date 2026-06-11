@@ -1,19 +1,22 @@
 
-using System;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class RangedWeapon : MonoBehaviour, IWeapon
 {
-    [SerializeField] private GameObject projectile;
+    public GameObject projectile;
     public float rotationOffset = 0;
     public float cooldown = 0.5f;
     public bool isPlayerWeapon = false;
-    float timer = 0f;
+    public float timer = 0f;
     private Camera mainCamera;
+    
+    public string desc;
+    public string getDesc(){return desc;}
+    public string Name;
+    public string getName(){return Name;}
+    public int price;
+    public int getPrice(){return price;}
     void Start()
     {
         mainCamera = Camera.main;
@@ -47,7 +50,7 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     {
         Shoot();
     }
-    public void Shoot()
+    public virtual void Shoot()
     {
         if (timer < cooldown) return;
         timer = 0;

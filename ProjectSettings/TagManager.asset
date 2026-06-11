@@ -40,6 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Nocollision
+    uniqueID: 4065607031
+    locked: 0
+  - name: Shadow
+    uniqueID: 149314021
+    locked: 0
+  - name: Walls
+    uniqueID: 3761612279
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

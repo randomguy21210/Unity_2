@@ -106,14 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
   attackRange: 1
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
   attackDamage: 5
   cooldown: 0.5
   rotationOffset: -45
   isPlayerWeapon: 1
   animationName: Broom
+  desc: testbroom
+  Name: Broom
 --- !u!95 &2034548249409026336
 Animator:
   serializedVersion: 7

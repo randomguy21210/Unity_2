@@ -108,3 +108,5 @@ MonoBehaviour:
   rotationOffset: 180
   cooldown: 0.5
   isPlayerWeapon: 1
+  desc: testsanitizer
+  Name: Sanitizer

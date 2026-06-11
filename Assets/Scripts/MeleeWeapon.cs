@@ -13,6 +13,12 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     private Animator anim;
     float timer = 0f;
     private Camera mainCamera;
+    public string desc;
+    public string getDesc(){return desc;}
+    public string Name;
+    public string getName(){return Name;}
+    public int price;
+    public int getPrice(){return price;}
     void Start()
     {
         mainCamera = Camera.main;

@@ -17,12 +17,12 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         transform.Rotate(0,0,rotationOffset);
     }
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         float angle = Mathf.Deg2Rad * (transform.eulerAngles.z - rotationOffset);
         rb.MovePosition((Vector2)rb.position + speed * Time.fixedDeltaTime * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
     }
-    void Update()
+    public virtual void Update()
     {
         if (timer + Time.deltaTime >= time)
         {
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         }
         if (pierce == 0) Die();
     }
-    public void Die()
+    public virtual void Die()
     {
         transform.Rotate(new Vector3(0,0,-rotationOffset));
         if (nextProjectile != null) Instantiate(nextProjectile, transform.position, transform.rotation);

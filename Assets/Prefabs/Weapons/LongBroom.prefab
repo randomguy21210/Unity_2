@@ -133,3 +133,5 @@ MonoBehaviour:
   rotationOffset: -45
   isPlayerWeapon: 1
   animationName: LongBroom
+  desc: testlongbroom
+  Name: Long Broom
