@@ -110,8 +110,9 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 8
-  health: 50
+  health: 30
   weaponPrefab: {fileID: 7940929950470748374, guid: d88c48d8085157c489e2722008581dde, type: 3}
+  droppedCoins: 5
 --- !u!50 &2938474158684273960
 Rigidbody2D:
   serializedVersion: 5

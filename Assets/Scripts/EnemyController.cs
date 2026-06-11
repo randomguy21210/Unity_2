@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour, IEnemy
     public GameObject weaponPrefab;
     public float getMoveSpeed(){return moveSpeed;}
     public void setMoveSpeed(float set){moveSpeed = set;}
+    public int droppedCoins;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,6 +40,6 @@ public class EnemyController : MonoBehaviour, IEnemy
     public void dealDamage(int damage)
     {
        health -= damage;
-       if (health <= 0) Destroy(gameObject); 
+       if (health <= 0) {AudioManager.instance.Play("Coin");Destroy(gameObject);player.coins+=droppedCoins;}
     }
 }

@@ -116,7 +116,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   minTurnTime: 0.1
   maxTurnTime: 0.5
-  slowAmount: 0
+  slowAmount: 1
 --- !u!50 &2707784902277404079
 Rigidbody2D:
   serializedVersion: 5

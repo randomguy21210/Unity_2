@@ -56,6 +56,8 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     private void Swing()
     {
         if (timer < cooldown) return;
+        
+        AudioManager.instance.Play("Hurt");
         if (anim != null) anim.Play(animationName, 0, 0f);
         timer = 0;
         if (isPlayerWeapon)

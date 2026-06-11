@@ -108,5 +108,7 @@ MonoBehaviour:
   rotationOffset: 180
   cooldown: 0.5
   isPlayerWeapon: 1
-  desc: testsanitizer
+  timer: 0
+  desc: A bottle of sanitizer. Shoots sanitizer. Costs 10.
   Name: Sanitizer
+  price: 10

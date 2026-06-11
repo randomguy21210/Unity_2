@@ -109,6 +109,6 @@ MonoBehaviour:
   cooldown: 2
   isPlayerWeapon: 1
   timer: 0
-  desc: roombatest
+  desc: Drives around looking for enemies. Slowly runs out of battery. Costs 10.
   Name: Roomba
-  price: 0
+  price: 10

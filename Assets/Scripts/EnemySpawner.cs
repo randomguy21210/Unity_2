@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     float timer = 0f;
-    [SerializeField] private GameObject enemyPrefab;
+    public GameObject enemyPrefab;
+    public float cooldown;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +15,9 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 1f)
+        if (timer >= cooldown)
         {
-            timer -= 1f;
+            timer -= cooldown;
             Instantiate(enemyPrefab, transform.position, transform.rotation);
         }
     }

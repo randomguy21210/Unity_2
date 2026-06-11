@@ -105,14 +105,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad8744ac49abc445bae39ba4875f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  attackRange: 1
-  attackDamage: 5
+  attackRange: 1.5
+  attackDamage: 6
   cooldown: 0.5
   rotationOffset: -45
   isPlayerWeapon: 1
   animationName: Broom
-  desc: testbroom
+  desc: A cleaning tool consisting of stiff fibers attached to a handle. Attacks
+    in a short-range arc around you.
   Name: Broom
+  price: 0
 --- !u!95 &2034548249409026336
 Animator:
   serializedVersion: 7

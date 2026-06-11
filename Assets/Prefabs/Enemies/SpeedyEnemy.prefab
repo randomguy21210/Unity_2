@@ -106,12 +106,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42261b4c078daa4eac00e1dc0a700cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  moveSpeed: 8
+  moveSpeed: 5
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 8
-  health: 5
+  health: 10
   weaponPrefab: {fileID: 3072894154467039891, guid: b676ca3f2f665b442827117f66d5394c, type: 3}
+  droppedCoins: 3
 --- !u!50 &4012378090570362194
 Rigidbody2D:
   serializedVersion: 5

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using NUnit.Framework;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] weaponPrefabs;
     private int curHotbarSlot = 0;
     private int[] hotbarWeapons = new int[3];
-    private int weaponCount = 1;
+    public int weaponCount = 1;
     public int[] prevWeapon;
     public bool[] hasWeapon;
     public int coins;
@@ -38,7 +39,22 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI[] weaponNames;
     public GameObject UI;
     public GameObject Shop;
-    public int waves = 0;
+    public TextMeshProUGUI coinAmount;
+    public int totalWaves = 5;
+    public int waves = 1;
+    public GameObject[] wave1spawners;
+    public GameObject[] wave2spawners;
+    public GameObject[] wave3spawners;
+    public GameObject[] wave4spawners;
+    public GameObject[] wave5spawners;
+    public GameObject[][] waveSpawners;
+    public TextMeshProUGUI waveCounter;
+    public TextMeshProUGUI timeCounter;
+    public TextMeshProUGUI UIcoinAmount;
+    public Image[] hotbarSprites;
+    public Image[] hotbarWeaponSprites;
+    public Sprite unselectedHotbar;
+    public Sprite selectedHotbar;
     private void OnEnable()
     {
         AttackAction.Enable();
@@ -68,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        waveSpawners = new GameObject[][] {wave1spawners, wave2spawners, wave3spawners, wave4spawners, wave5spawners};
+        Navigation.Map = new();
         UI.SetActive(true);
         Shop.SetActive(false);
         health = maxhealth;
@@ -97,7 +115,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        UIcoinAmount.text = coins.ToString();
         Vector2 moveValue = moveAction.ReadValue<Vector2>().normalized;
         transform.Translate(moveValue * moveSpeed * Time.deltaTime);
         timer += Time.deltaTime;
@@ -129,10 +147,15 @@ public class PlayerController : MonoBehaviour
             }
             Navigation.directions = directions;
         }
+        timeCounter.text = "Time: " + Mathf.Round(timer2).ToString();
         if (timer2 >= Navigation.waveLength)
         {
             timer2 -= Navigation.waveLength;
             waves++;
+            if (waves > totalWaves)
+            {
+                SceneManager.LoadScene(3);
+            }
             openShop();
         }
     }
@@ -140,7 +163,11 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         healthBar.value = health;
-        if (health <= 0) SceneManager.LoadScene(1);
+        if (health <= 0) {
+        AudioManager.instance.Play("Die");
+        SceneManager.LoadScene(1);
+        }
+        else AudioManager.instance.Play("Hurt");
     }
     public void openShop()
     {
@@ -151,13 +178,26 @@ public class PlayerController : MonoBehaviour
     }
     public void closeShop()
     {
+        health = maxhealth;
+        healthBar.value = maxhealth;
         UI.SetActive(true);
         Shop.SetActive(false);
+        waveCounter.text = "Wave " + waves.ToString();
         Time.timeScale = 1f;
+        for(int i = 0; i < weaponCount; i++)hotbarWeaponSprites[i].sprite = weaponPrefabs[hotbarWeapons[i]].GetComponent<SpriteRenderer>().sprite;
+        foreach(GameObject o in waveSpawners[waves-2])
+        {
+            o.SetActive(false);
+        }
+        foreach(GameObject o in waveSpawners[waves - 1])
+        {
+            o.SetActive(true);
+        }
     }
     private List<int> shopWeapons = new List<int>();
     public void initShop()
     {
+        coinAmount.text = coins.ToString();
         shopWeapons.Clear();
         List<int> validWeapons = new List<int>();
         for(int i = 0; i < hasWeapon.Length; i++)
@@ -179,9 +219,11 @@ public class PlayerController : MonoBehaviour
     }
     public void buyWeapon(int index)
     {
-        if (weaponPrefabs[shopWeapons[index]].GetComponent<IWeapon>().getPrice() > coins) return;
-        if (weaponCount == 3 && prevWeapon[shopWeapons[index]] == -1) return;
+        if (hasWeapon[shopWeapons[index]]) {AudioManager.instance.Play("Error");return;}
+        if (weaponPrefabs[shopWeapons[index]].GetComponent<IWeapon>().getPrice() > coins) {AudioManager.instance.Play("Error");return;}
+        if (weaponCount == 3 && prevWeapon[shopWeapons[index]] == -1) {AudioManager.instance.Play("Error");return;}
         coins -= weaponPrefabs[shopWeapons[index]].GetComponent<IWeapon>().getPrice();
+        coinAmount.text = coins.ToString();
         if (prevWeapon[shopWeapons[index]] == -1) 
         {
             hotbarWeapons[weaponCount] = shopWeapons[index];
@@ -198,6 +240,7 @@ public class PlayerController : MonoBehaviour
             curHotbarSlot = hotbarSlot;
         }
         hasWeapon[shopWeapons[index]] = true;
+        AudioManager.instance.Play("Coin");
     }
     public void buyWeapon0(){buyWeapon(0);}
     public void buyWeapon1(){buyWeapon(1);}
@@ -206,7 +249,9 @@ public class PlayerController : MonoBehaviour
     {
         if (index == curHotbarSlot) return;
         if (index >= weaponCount) return;
+        hotbarSprites[curHotbarSlot].sprite = unselectedHotbar;
         curHotbarSlot = index;
+        hotbarSprites[curHotbarSlot].sprite = selectedHotbar;
         Destroy(activeWeaponGameObject);
         activeWeaponGameObject = Instantiate(weaponPrefabs[hotbarWeapons[index]], gameObject.GetComponent<Transform>());
         activeWeapon = activeWeaponGameObject.GetComponent<IWeapon>();

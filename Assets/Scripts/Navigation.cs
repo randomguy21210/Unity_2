@@ -7,7 +7,7 @@ public static class Navigation
     public static PlayerController player;
     public static float weaponDistance = 1f;
     public static float enemyRange = 4f;
-    public static float waveLength = 60f;
+    public static float waveLength = 20f;
     public static int mapx = 100;
     public static int mapy = 100;
     public static int[,] directions = new int[mapx,mapy];

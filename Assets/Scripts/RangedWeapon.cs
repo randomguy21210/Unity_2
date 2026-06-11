@@ -53,6 +53,8 @@ public class RangedWeapon : MonoBehaviour, IWeapon
     public virtual void Shoot()
     {
         if (timer < cooldown) return;
+        
+        AudioManager.instance.Play("Hurt");
         timer = 0;
         Projectile p = Instantiate(projectile, transform.position, Quaternion.Euler(0,0,transform.rotation.eulerAngles.z-rotationOffset)).GetComponent<Projectile>();
         p.isPlayerProjectile = isPlayerWeapon;

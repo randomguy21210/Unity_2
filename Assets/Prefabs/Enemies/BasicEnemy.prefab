@@ -112,6 +112,7 @@ MonoBehaviour:
     m_Bits: 8
   health: 10
   weaponPrefab: {fileID: 3203115915897702705, guid: 62deb14513466814f8f8541b84b70f22, type: 3}
+  droppedCoins: 1
 --- !u!50 &531024097054630237
 Rigidbody2D:
   serializedVersion: 5

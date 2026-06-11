@@ -127,11 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad8744ac49abc445bae39ba4875f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
-  attackRange: 2
+  attackRange: 2.5
   attackDamage: 20
   cooldown: 0.5
   rotationOffset: -45
   isPlayerWeapon: 1
   animationName: LongBroom
-  desc: testlongbroom
+  desc: Two brooms duct-taped together, Attacks in a longer-range arc around you.
+    Small blind spot extremely near you. Costs 10.
   Name: Long Broom
+  price: 10

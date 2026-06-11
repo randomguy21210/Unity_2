@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
   attackRange: 1
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  attackDamage: 15
-  cooldown: 0.3
+  attackDamage: 10
+  cooldown: 0.8
   rotationOffset: 0
   isPlayerWeapon: 0
   animationName: 
+  desc: 
+  Name: 
+  price: 0

@@ -50,9 +50,9 @@ MonoBehaviour:
   cooldown: 2
   isPlayerWeapon: 1
   timer: 0
-  desc: testsoap
+  desc: An aged, rock-hard soap bar. Can be thrown and bounced around. Costs 10.
   Name: Soap
-  price: 0
+  price: 10
 --- !u!212 &-7633330664154978591
 SpriteRenderer:
   serializedVersion: 2

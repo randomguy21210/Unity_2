@@ -5,17 +5,14 @@ using TMPro;
 public class AudioManager : MonoBehaviour
 {
 
-    public static AudioManager instance;
+    public static AudioManager instance = null;
     public Sound[] music;
     public Sound[] effects;
     public float BGM_Vol;
-    private float SFX_Vol;
+    public float SFX_Vol;
 
     void Awake()
     {
-        // this front part ensures that
-        // 1. music does not restart when you switch scenes
-        // 2. multiple audio managers are not created between scenes
         if (instance != null)
         {
             Destroy(gameObject);
@@ -108,7 +105,7 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
         {
-        Play("Spring");
+        Play("Music");
         }
     public void changeBGM_Vol(float newVol)
 {
@@ -119,6 +116,14 @@ public class AudioManager : MonoBehaviour
         s.source.volume = s.volume * BGM_Vol;
     }
 
+    }
+    public void changeSFX_Vol(float newVol)
+    {
+        SFX_Vol = newVol;
+        foreach (Sound s in effects)
+        {
+            s.source.volume = s.volume * SFX_Vol;
+        }
     }
 }
 
@@ -134,6 +139,7 @@ public class MusicValue : MonoBehaviour
    }
    void Update()
    {
+        if (AudioManager.instance == null) return;
        volume = (int)(audioM.GetComponent<AudioManager>().BGM_Vol*100);
        textDisplay.text = volume.ToString() + "%";
    }
