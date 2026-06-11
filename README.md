@@ -6,5 +6,5 @@ https://docs.google.com/presentation/d/1Ahd5b1GDnMTUo5ZfbQmr1SpdY3CeUzdqzJGwX4vb
 
 Steps to run:
 Download entire repo and extract
-Open BuildFinalActual folder
-Run BBCS June Jam 2026 U2.exe
+add to unity hub
+build and run in unity hub
