@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &153942783197473689
+--- !u!1 &4494410612223184552
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2647683476033733243}
-  - component: {fileID: 9173602410837632538}
-  - component: {fileID: 2845493037807819801}
-  - component: {fileID: 531024097054630237}
-  - component: {fileID: 2191018849848432329}
-  m_Layer: 6
-  m_Name: BasicEnemy
-  m_TagString: Enemy
+  - component: {fileID: 4849082053115690282}
+  - component: {fileID: 5395422435783874980}
+  - component: {fileID: 1941737087460886030}
+  - component: {fileID: 2938474158684273960}
+  - component: {fileID: 3678652724584709616}
+  m_Layer: 0
+  m_Name: TankyEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2647683476033733243
+--- !u!4 &4849082053115690282
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153942783197473689}
+  m_GameObject: {fileID: 4494410612223184552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -35,14 +35,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9173602410837632538
+--- !u!212 &5395422435783874980
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153942783197473689}
+  m_GameObject: {fileID: 4494410612223184552}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,45 +84,45 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8694855868168210764, guid: cd52e4415b0b7d1438e336378c424864, type: 3}
+  m_Sprite: {fileID: -6380021631992503839, guid: e6465d63a52dff64daa20db6e88f94b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.23}
+  m_Size: {x: 2, y: 2.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2845493037807819801
+--- !u!114 &1941737087460886030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153942783197473689}
+  m_GameObject: {fileID: 4494410612223184552}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f42261b4c078daa4eac00e1dc0a700cb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  moveSpeed: 3.8
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  moveSpeed: 2
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 8
-  health: 10
-  weaponPrefab: {fileID: 3203115915897702705, guid: 62deb14513466814f8f8541b84b70f22, type: 3}
---- !u!50 &531024097054630237
+  health: 50
+  weaponPrefab: {fileID: 7940929950470748374, guid: d88c48d8085157c489e2722008581dde, type: 3}
+--- !u!50 &2938474158684273960
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153942783197473689}
+  m_GameObject: {fileID: 4494410612223184552}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -139,13 +139,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &2191018849848432329
+--- !u!70 &3678652724584709616
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153942783197473689}
+  m_GameObject: {fileID: 4494410612223184552}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1

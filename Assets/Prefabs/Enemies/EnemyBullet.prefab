@@ -106,13 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c5aeb419392d941aec7941ef15d16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 1
+  damage: 5
   speed: 5
-  pierce: 3
+  pierce: 1
   time: 2
   rotationOffset: 0
   isPlayerProjectile: 0
   nextProjectile: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!50 &7328526327972601737
 Rigidbody2D:
   serializedVersion: 5

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class EnemyController : MonoBehaviour, IEnemy
 {
@@ -8,12 +9,15 @@ public class EnemyController : MonoBehaviour, IEnemy
     private PlayerController player;
     public int health;
     public IWeapon activeWeapon;
+    private bool isRanged = false;
     public GameObject weaponPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = Navigation.player;
-        activeWeapon = Instantiate(weaponPrefab,gameObject.GetComponent<Transform>()).GetComponent<IWeapon>();
+        GameObject weaponGameObject = Instantiate(weaponPrefab,gameObject.GetComponent<Transform>());
+        activeWeapon = weaponGameObject.GetComponent<IWeapon>();
+        if (weaponGameObject.GetComponent<RangedWeapon>() != null) isRanged = true;
     }
 
     // Update is called once per frame
@@ -22,7 +26,7 @@ public class EnemyController : MonoBehaviour, IEnemy
         if (player == null) player = Navigation.player;
         if (player != null && !Physics2D.Linecast(transform.position, player.transform.position, obstacleLayers))
         {
-            transform.Translate(Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime)- new Vector2(transform.position.x,transform.position.y));
+            if (!isRanged || (isRanged && Vector2.Distance(transform.position, player.transform.position) > Navigation.enemyRange)) transform.Translate(Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime)- new Vector2(transform.position.x,transform.position.y));
             if (activeWeapon.canSwing() && Vector2.Distance(transform.position, player.transform.position)<=activeWeapon.getAttackRange())activeWeapon.Attack();
         }
         else if (Navigation.directions[(int)Math.Floor(transform.position.x/Navigation.tilesize),(int)Math.Floor(transform.position.y/Navigation.tilesize)] != 0)

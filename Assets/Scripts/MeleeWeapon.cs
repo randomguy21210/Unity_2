@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class MeleeWeapon : MonoBehaviour, IWeapon
 {
     public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
     public int attackDamage = 20;
     public float cooldown = 0.5f;
     public float rotationOffset = 0;
@@ -51,7 +50,7 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     private void Swing()
     {
         if (timer < cooldown) return;
-        anim.Play(animationName, 0, 0f);
+        if (anim != null) anim.Play(animationName, 0, 0f);
         timer = 0;
         if (isPlayerWeapon)
         {

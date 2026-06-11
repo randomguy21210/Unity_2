@@ -113,7 +113,7 @@ MonoBehaviour:
   cooldown: 0.5
   rotationOffset: -45
   isPlayerWeapon: 1
-  animationName: 
+  animationName: Broom
 --- !u!95 &2034548249409026336
 Animator:
   serializedVersion: 7

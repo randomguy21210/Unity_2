@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 342655203f522a949bc5e5df55ea96eb
+guid: 42517cf3168d17b418ec65069ea8334d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9097224317191444759
-    second: soapbar_0
+      213: -4368118005776411701
+    second: soapbar 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soapbar_0
+      name: soapbar 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
         width: 16
-        height: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 719dd3c3155df3e70800000000000000
-      internalID: 9097224317191444759
+      spriteID: bc395b821d35163c0800000000000000
+      internalID: -4368118005776411701
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      soapbar_0: 9097224317191444759
+      soapbar 1_0: -4368118005776411701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

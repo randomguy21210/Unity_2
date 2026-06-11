@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.Tilemaps;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     float timer = 0f;
     public Tilemap tilemap;
     private int [,] visited = new int[Navigation.mapx,Navigation.mapy];
-    private int health;
+    private int health = 100;
     private GameObject[] Weapons = new GameObject[3];
     private IWeapon[] IWeapons = new IWeapon[3];
     public IWeapon activeWeapon;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        health = 100;
         Weapons[0] = Instantiate(weaponPrefabs[0], gameObject.GetComponent<Transform>());
         IWeapons[0] = Weapons[0].GetComponent<IWeapon>();
         activeWeapon = GetComponentInChildren<IWeapon>();
@@ -95,6 +97,6 @@ public class PlayerController : MonoBehaviour
     public void dealDamage(int damage)
     {
         health -= damage;
-        if (health <= 0) return; //Scenemanager.loadscene scene
+        if (health <= 0) SceneManager.LoadScene(1);
     }
 }

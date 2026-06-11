@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc7792be5bc6d54ba428e5c0a578539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  enemyPrefab: {fileID: 5765804851075929244, guid: 0743a75bf0f641644a504efda50f8fc7, type: 3}
+  enemyPrefab: {fileID: 4494410612223184552, guid: aa6aa3e9fb187cc4bbf6adc47d33eaac, type: 3}
 --- !u!4 &351982182
 Transform:
   m_ObjectHideFlags: 0
@@ -6099,7 +6099,7 @@ MonoBehaviour:
   moveSpeed: 8
   tilemap: {fileID: 264571273}
   weaponPrefabs:
-  - {fileID: 7374336033059234474, guid: 320e5771dfe35614295dc46ee74aa0f2, type: 3}
+  - {fileID: 6903247834425463060, guid: 18c6bf124456cc44993820cff5a2e2a4, type: 3}
   AttackAction:
     m_Name: Attack
     m_Type: 0

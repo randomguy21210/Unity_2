@@ -4,7 +4,8 @@ using UnityEngine;
 public static class Navigation
 {
     public static PlayerController player;
-    public static float weaponDistance = 1.2f;
+    public static float weaponDistance = 1f;
+    public static float enemyRange = 4f;
     public static int mapx = 60;
     public static int mapy = 60;
     public static int[,] directions = new int[mapx,mapy];
