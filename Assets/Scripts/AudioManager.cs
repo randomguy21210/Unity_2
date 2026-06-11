@@ -26,50 +26,99 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        foreach (Sound s in music)
+        // Initialize volume to max
+        if (BGM_Vol == 0)
+            BGM_Vol = 1f;
+
+        if (music != null)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.loop = s.loop;
+            foreach (Sound s in music)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.loop = s.loop;
+                s.source.playOnAwake = false;
+                s.source.volume = s.volume * BGM_Vol;
+                Debug.Log("AudioManager Awake: registered music '" + s.name + "' clip=" + (s.clip != null) + " baseVol=" + s.volume + " BGM_Vol=" + BGM_Vol);
+            }
         }
 
-        foreach (Sound s in effects)
+        if (effects != null)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.loop = s.loop;
+            foreach (Sound s in effects)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.loop = s.loop;
+                s.source.playOnAwake = false;
+                s.source.volume = s.volume;
+                Debug.Log("AudioManager Awake: registered effect '" + s.name + "' clip=" + (s.clip != null) + " baseVol=" + s.volume);
+            }
         }
     }
 
     public void Play(string sound)
     {
-        Sound s = Array.Find(music, item => item.name == sound);
-        if (s == null)
+        Debug.Log("AudioManager: Play('" + sound + "')");
+
+        Sound s = null;
+        string foundIn = "none";
+
+        if (music != null)
         {
-            s = Array.Find(effects, item => item.name == sound);
-            if (s == null)
-            {
-                Debug.LogWarning("Sound: " + name + " not found!");
-                return;
-            }
+            s = Array.Find(music, item => item.name == sound);
+            if (s != null) foundIn = "music";
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        if (s == null && effects != null)
+        {
+            s = Array.Find(effects, item => item.name == sound);
+            if (s != null) foundIn = "effects";
+        }
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + sound + " not found!");
+            return;
+        }
+
+        if (s.source == null)
+        {
+            Debug.LogWarning("Sound '" + sound + "' has no AudioSource (source was null)");
+            return;
+        }
+
+        if (s.clip == null)
+        {
+            Debug.LogWarning("Sound '" + sound + "' has no AudioClip assigned (clip is null)");
+            return;
+        }
+
+        float varianceFactor = 1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f);
+        Debug.Log("AudioManager: compute vol: baseVol=" + s.volume + " BGM_Vol=" + BGM_Vol + " varianceFactor=" + varianceFactor);
+        if (foundIn == "music")
+            s.source.volume = s.volume * BGM_Vol * varianceFactor;
+        else
+            s.source.volume = s.volume * varianceFactor;
+
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+
+        Debug.Log("AudioManager: Playing '" + sound + "' (" + foundIn + ") clip=" + (s.clip != null) + " vol=" + s.source.volume);
         s.source.Play();
     }
     void Start()
-    {
+        {
         Play("Spring");
-    }
-    public void changeBGM_Vol(System.Single newVol)
-    {
+        }
+    public void changeBGM_Vol(float newVol)
+{
     BGM_Vol = newVol;
+
     foreach (Sound s in music)
     {
-        s.source = gameObject.GetComponent<AudioSource>();
-        s.source.volume = s.volume * BGM_Vol * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
+        s.source.volume = s.volume * BGM_Vol;
     }
+
     }
 }
 
