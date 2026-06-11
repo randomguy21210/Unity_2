@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         healthBar.value = health;
         if (health <= 0) {
         AudioManager.instance.Play("Die");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         }
         else AudioManager.instance.Play("Hurt");
     }
